@@ -1,8 +1,17 @@
 import express, { json } from 'express'
+import morgan from 'morgan'
+
 import { persons } from './utils/data.js'
 
 const app = express()
 const PORT = 3001
+
+morgan.token('body', req => {
+  return JSON.stringify(req.body)
+})
+
+app.use(morgan(':method :url :body'))
+//app.use(morgan('tiny'))
 
 app.use(json())
 
@@ -73,7 +82,7 @@ app.post('/api/persons', (request, response) => {
             error: 'name missing'
         })
     }
-    
+
     if (!body.number) {
         return response.status(400).json({
             error: 'number missing'
