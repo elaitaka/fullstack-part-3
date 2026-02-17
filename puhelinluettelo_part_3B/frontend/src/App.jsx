@@ -71,6 +71,9 @@ const App = () => {
   */
   const updatePerson = (name, number) => {
     if (window.confirm("Do you want to replace the existing phone number?") === true) {
+      
+      console.log("HERE Person update confirmed...");
+      
       const person = persons.find((p) => p.name === name);
       const changedPerson = {
         ...person,

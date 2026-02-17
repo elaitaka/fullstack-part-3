@@ -1,7 +1,8 @@
 import axios from "axios"
 
 //const baseUrl = 'http://localhost:3001/persons/'
-const baseUrl = 'http://localhost:3001/api/persons/'
+//const baseUrl = 'http://localhost:3001/api/persons/'
+const baseUrl = '/api/persons/'
 
 
 const getAll = () => axios.get(baseUrl).then((response) => response.data)
@@ -12,6 +13,9 @@ const createNewPerson = (name, number) => {
 }
 
 const updatePersonById = (changedPerson) => {
+
+console.log("HERE 4: updatePersonById function called with changedPerson:", changedPerson)
+
     return axios.put(`${baseUrl}${changedPerson.id}`, changedPerson).then((response) => response.data)
 }
 

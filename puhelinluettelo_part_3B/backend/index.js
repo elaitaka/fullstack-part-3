@@ -1,6 +1,6 @@
 import express, { json } from 'express'
 import morgan from 'morgan'
-import cors from 'cors'
+//import cors from 'cors'
 
 import { persons } from './utils/data.js'
 
@@ -8,7 +8,8 @@ import { persons } from './utils/data.js'
 const app = express()
 const PORT = process.env.PORT || 3001
 
-app.use(cors())
+app.use(express.static('dist'))
+//app.use(cors())
 
 
 morgan.token('body', req => {
@@ -25,7 +26,6 @@ export function add(a, b) {
     console.log("HERE 2: add function called with arguments:", a, b)
     return a + b;
 }
-
 
 /* function generate a new id for a person */
 function generateId() {
